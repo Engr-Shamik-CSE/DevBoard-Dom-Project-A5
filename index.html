@@ -1,97 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevBoard</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.0/dist/full.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevBoard- Task Management Project</title>
+    <!-- add DaisyUI and Tailwind cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Try adding some custom CSS -->
+    <style type="text/tailwindcss">
+        @theme {
+          --color-clifford: #da373d;
+          --color-p-greeny-black: #777777;
+          --color-h1-black: #1C1C1C;
+          --font-poppins: "Poppins", "sans-serif"; 
+        }
+      </style>
+
+    <!-- Google font cdn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap"
+        rel="stylesheet">
 </head>
-<body class="bg-gray-100 p-4">
-  <div class="container mx-auto">
-    <!-- Header Section -->
-    <div class="flex justify-between items-center mb-6">
-      <div id="task-assigned" class="text-xl font-bold">Task Assigned <span id="task-count" class="text-blue-500">05</span></div>
-      <div id="discover-button" class="flex items-center bg-gradient-to-r from-blue-400 to-purple-500 text-white p-2 rounded-lg cursor-pointer">
-        <span>Discover Something New Today!</span>
-        <img src="https://via.placeholder.com/24" alt="calendar" class="ml-2">
-      </div>
-    </div>
 
-    <!-- Activity Log Section -->
-    <div class="bg-white p-4 rounded-lg shadow mb-6">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-lg font-semibold">Activity Log</h2>
-        <button id="clear-history" class="btn btn-sm btn-outline">Clear History</button>
-      </div>
-      <ul id="activity-log">
-        <li class="text-sm text-gray-600">You have Complete The Task Add Dark Mode at 12:48:15 PM</li>
-        <li class="text-sm text-gray-600">You have Complete The Task Add Dark Mode at 12:48:15 PM</li>
-      </ul>
-    </div>
+<body id="body-container" class="bg-blue-100 min-h-screen">
+    <section id="body-section-container" class="max-w-7xl mx-auto px-3 md:px-5 space-y-4 py-[20px] "><!-- container Section -->
+        <header class="pt-4">
+            <div class="navbar bg-base-100 shadow-sm rounded-2xl">
+                <div class="flex-1 ">
+                    <a class="text-xl flex items-center" href="#">
+                        <img src="./assests/main-logo.png" width="40" height="40" class="p-2" alt="">
+                        Dev<span class="font-bold">Board</span></a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="flex gap-2 bg-slate-100 px-4 py-2 rounded-4xl">
+                        <img src="./assests/right-mark-image.png" width="15" height="15" alt="">
+                        <p id="total-task-completed">23</p>
+                    </div>
+                    <div class="w-10 rounded-full">
+                        <img alt="Tailwind CSS Navbar component" src="./assests/bg-color-changing-button.png" width="80"
+                            height="80" />
+                    </div>
+                </div>
+            </div>
+        </header><!-- end of navbar Section -->
 
-    <!-- Task Cards Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Task Card 1 -->
-      <div id="task-1" class="bg-white p-4 rounded-lg shadow">
-        <h3 class="text-lg font-semibold">Fix Mobile Button Issue</h3>
-        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
-        <div class="flex justify-between items-center mt-4">
-          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
-          <button id="complete-task-1" class="btn btn-sm btn-success">Completed</button>
-        </div>
-      </div>
+        <!-- start of main and Aside Section -->
+        <section class="flex gap-4">
+            <main class="w-9/12 h-auto gap-2 bg-base-100 shadow-sm rounded-2xl mb-10">
+                <div>
+                    <div class="flex justify-between items-center gap-3 p-4 ">
+                        <div id="task-assigned-card"
+                            class="w-3/12 flex items-center justify-center bg-blue-100 px-4 py-2 rounded-xl gap-4">
+                            <img src="./assests/right-mark-image-64-64.png" width="35" height="35" alt="">
+                            <div class="w-full">
+                                <p class="text-[10px]">Task Assigned </p>
+                                <h2 id="task-assigned-number" class="text-[18px] font-bold"> 06 </h2>
+                            </div>
+                        </div>
 
-      <!-- Task Card 2 -->
-      <div id="task-2" class="bg-white p-4 rounded-lg shadow">
-        <h3 class="text-lg font-semibold">Add Dark Mode</h3>
-        <p class="text-sm text-gray-600">Store the user’s preference in localStorage, update CSS variables...</p>
-        <div class="flex justify-between items-center mt-4">
-          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
-          <button id="complete-task-2" class="btn btn-sm btn-success">Completed</button>
-        </div>
-      </div>
+                        <a href="faq-blog.html"
+                            class="w-6/12 flex items-center justify-center bg-gradient-to-l from-[#9BA8F8] to-[#3752FD] px-5 py-3 rounded-2xl gap-4">
+                            <img src="./assests/calender-image-for-discover-div.png" width="35" height="35" alt="">
+                            <div class="w-full">
+                                <p class="text-[10px] text-white">Discover Something <br> New Today!</p>
+                            </div>
+                        </a>
 
-      <!-- Task Card 3 -->
-      <div id="task-3" class="bg-white p-4 rounded-lg shadow">
-        <h3 class="text-lg font-semibold">Optimize Home page</h3>
-        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
-        <div class="flex justify-between items-center mt-4">
-          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
-          <button id="complete-task-3" class="btn btn-sm btn-success">Completed</button>
-        </div>
-      </div>
+                        <div id="task-assigned-card"
+                            class="w-3/12 flex items-center justify-center bg-blue-100 px-4 py-2 rounded-2xl gap-4">
+                            <img src="./assests/calender-icon-image -date-time.png" width="35" height="35" alt="">
+                            <div class="w-full">
+                                <p id="todays-day-date" class="text-[10px]">Wed ,<br><span class="font-bold">Jul 28
+                                        2025</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- start of border-bottom div -->
+                <div class=" border-b-[1px] border-dashed border-blue-200 ">
+                </div>
+                <!-- end of border-bottom div -->
 
-      <!-- Task Card 4 -->
-      <div id="task-4" class="bg-white p-4 rounded-lg shadow">
-        <h3 class="text-lg font-semibold">Add New Emoji 🙌</h3>
-        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
-        <div class="flex justify-between items-center mt-4">
-          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
-          <button id="complete-task-4" class="btn btn-sm btn-success">Completed</button>
-        </div>
-      </div>
+                <!-- start of main Grid Section -->
+                <div class="grid grid-cols-3 gap-4 p-4">
+                    <!-- task 1 -->
+                    <div class="bg-blue-100 rounded-xl p-4 space-y-4">
+                        <a href="#" class="bg-white px-3 py-1 rounded-xl text-[7px]">ShopEase</a>
+                        <h1 id="task-title" class="font-bold mt-3">Fix Mobile Button Issue </h1>
+                        <p
+                            class="text-[9px] px-2 py-2 line-clamp-2 leading-loose bg-gray-100 rounded-lg max-h-[48px] overflow-hidden">
+                            Debug using Chrome DevTools, check for overlapping elements, and ensure onClick works
+                            properly and ensure onClick works properly</p>
+                        <!-- start of border-bottom div -->
+                        <div class=" border-b-[1px] border-dashed border-blue-200 ">
+                        </div>
+                        <!-- end of border-bottom div -->
+                        <div class="flex justify-between items-center">
+                            <p class="text-[9px]">Deadline <br>
+                                <span class="font-bold">25 March 2025</span>
+                            </p>
+                            <button id="btn-completed"
+                                class="text-white bg-[#3752FD] px-3 py-1 rounded-md">completed</button>
+                        </div>
+                    </div><!-- End task 1 -->
 
-      <!-- Task Card 5 -->
-      <div id="task-5" class="bg-white p-4 rounded-lg shadow">
-        <h3 class="text-lg font-semibold">Integrate OpenAI API</h3>
-        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
-        <div class="flex justify-between items-center mt-4">
-          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
-          <button id="complete-task-5" class="btn btn-sm btn-success">Completed</button>
-        </div>
-      </div>
+                    <!-- task 2 -->
+                    <div class="bg-blue-100 rounded-xl p-4 space-y-4">
+                        <a href="#" class="bg-white px-3 py-1 rounded-xl text-[7px]">CloudSync</a>
+                        <h1 id="task-title" class="font-bold mt-3">Add Dark Mode</h1>
+                        <p
+                            class="text-[9px] px-2 py-2 line-clamp-2 leading-loose bg-gray-100 rounded-lg max-h-[48px] overflow-hidden">
+                            Store the user's preference in localStorage, update CSS variables dynamically, and apply a
+                            smooth transition effect.</p>
+                        <!-- start of border-bottom div -->
+                        <div class=" border-b-[1px] border-dashed border-blue-200 ">
+                        </div>
+                        <!-- end of border-bottom div -->
+                        <div class="flex justify-between items-center">
+                            <p class="text-[9px]">Deadline <br>
+                                <span class="font-bold">26 March 2025</span>
+                            </p>
+                            <button id="btn-completed"
+                                class="text-white bg-[#3752FD] px-3 py-1 rounded-md">completed</button>
+                        </div>
+                    </div><!-- End task 2 -->
 
-      <!-- Task Card 6 -->
-      <div id="task-6" class="bg-white p-4 rounded-lg shadow">
-        <h3 class="text-lg font-semibold">Improve Job Searching</h3>
-        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
-        <div class="flex justify-between items-center mt-4">
-          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
-          <button id="complete-task-6" class="btn btn-sm btn-success">Completed</button>
-        </div>
-      </div>
-    </div>
-  </div>
+                    <!-- task 3 -->
+                    <div class="bg-blue-100 rounded-xl p-4 space-y-4">
+                        <a href="#" class="bg-white px-3 py-1 rounded-xl text-[7px]">SwiftPay</a>
+                        <h1 id="task-title" class="font-bold mt-3">Optimize Home page</h1>
+                        <p
+                            class="text-[9px] px-2 py-2 line-clamp-2 leading-loose bg-gray-100 rounded-lg max-h-[48px] overflow-hidden">
+                            Debug using Chrome DevTools, check for overlapping elements, and ensure onClick works
+                            properly and ensure onClick works properly</p>
+                        <!-- start of border-bottom div -->
+                        <div class=" border-b-[1px] border-dashed border-blue-200 ">
+                        </div>
+                        <!-- end of border-bottom div -->
+                        <div class="flex justify-between items-center">
+                            <p class="text-[9px]">Deadline <br>
+                                <span class="font-bold">27 March 2025</span>
+                            </p>
+                            <button id="btn-completed"
+                                class="text-white bg-[#3752FD] px-3 py-1 rounded-md">completed</button>
+                        </div>
+                    </div><!-- End task 3 -->
+
+                    <!-- task 4 -->
+                    <div class="bg-blue-100 rounded-xl p-4 space-y-4">
+                        <a href="#" class="bg-white px-3 py-1 rounded-xl text-[7px]">Meta</a>
+                        <h1 id="task-title" class="font-bold mt-3">Add new emoji 🤲</h1>
+                        <p
+                            class="text-[9px] px-2 py-2 line-clamp-2 leading-loose bg-gray-100 rounded-lg max-h-[48px] overflow-hidden">
+                            Store the user's preference in localStorage, update CSS variables dynamically, and apply a
+                            smooth transition effect.</p>
+                        <!-- start of border-bottom div -->
+                        <div class=" border-b-[1px] border-dashed border-blue-200 ">
+                        </div>
+                        <!-- end of border-bottom div -->
+                        <div class="flex justify-between items-center">
+                            <p class="text-[9px]">Deadline <br>
+                                <span class="font-bold">28 March 2025</span>
+                            </p>
+                            <button id="btn-completed"
+                                class="text-white bg-[#3752FD] px-3 py-1 rounded-md">completed</button>
+                        </div>
+                    </div><!-- End task 4 -->
+
+                    <!-- task 5 -->
+                    <div class="bg-blue-100 rounded-xl p-4 space-y-4">
+                        <a href="#" class="bg-white px-3 py-1 rounded-xl text-[7px]">Google LLC</a>
+                        <h1 id="task-title" class="font-bold mt-3">Integrate OpenAI API </h1>
+                        <p
+                            class="text-[9px] px-2 py-2 line-clamp-2 leading-loose bg-gray-100 rounded-lg max-h-[48px] overflow-hidden">
+                            Debug using Chrome DevTools, check for overlapping elements, and ensure onClick works
+                            properly and ensure onClick works properly</p>
+                        <!-- start of border-bottom div -->
+                        <div class=" border-b-[1px] border-dashed border-blue-200 ">
+                        </div>
+                        <!-- end of border-bottom div -->
+                        <div class="flex justify-between items-center">
+                            <p class="text-[9px]">Deadline <br>
+                                <span class="font-bold">28 March 2025</span>
+                            </p>
+                            <button id="btn-completed"
+                                class="text-white bg-[#3752FD] px-3 py-1 rounded-md">completed</button>
+                        </div>
+                    </div><!-- End task 5 -->
+
+                    <!-- task 6 -->
+                    <div class="bg-blue-100 rounded-xl p-4 space-y-4">
+                        <a href="#" class="bg-white px-3 py-1 rounded-xl text-[7px]">Glassdoar</a>
+                        <h1 id="task-title" class="font-bold mt-3">Improve Job searching</h1>
+                        <p
+                            class="text-[9px] px-2 py-2 line-clamp-2 leading-loose bg-gray-100 rounded-lg max-h-[48px] overflow-hidden">
+                            Store the user's preference in localStorage, update CSS variables dynamically, and apply a
+                            smooth transition effect.</p>
+                        <!-- start of border-bottom div -->
+                        <div class=" border-b-[1px] border-dashed border-blue-200 ">
+                        </div>
+                        <!-- end of border-bottom div -->
+                        <div class="flex justify-between items-center">
+                            <p class="text-[9px]">Deadline <br>
+                                <span class="font-bold">28 March 2025</span>
+                            </p>
+                            <button id="btn-completed"
+                                class="text-white bg-[#3752FD] px-3 py-1 rounded-md">completed</button>
+                        </div>
+                    </div><!-- End task 6 -->
+
+                </div> <!-- end of main Grid Section -->
+
+            </main>
+
+            <aside class="w-3/12 h-auto gap-2 bg-base-100 shadow-sm rounded-2xl mb-10">
+                <div id="task-assigned-card"
+                    class="w-full  grid items-center justify-center  px-4 py-4 rounded-xl gap-4">
+                    <div class="flex items-center justify-center gap-2">
+                        <img src="./assests/activity-log-history-icon-24-24.png" width="16" height="16" alt="">
+                        <p class="text-[10px]">Activity Log </p>
+                    </div>
+                    <button id="btn-clear-history" class="text-white bg-[#3752FD] px-3 py-1 rounded-md">Clear
+                        History
+                    </button>
+                </div>
+                <!-- start of border-bottom div -->
+                <div class=" border-b-[1px] border-dashed border-blue-200 ">
+                </div>
+                <!-- end of border-bottom div -->
+            </aside><!-- end of Aside -->
+        </section><!-- end of main and Aside Section -->
+    </section> <!-- end of container Section -->
 </body>
+
 </html>
