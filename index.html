@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevBoard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.0/dist/full.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="container mx-auto">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center mb-6">
+      <div id="task-assigned" class="text-xl font-bold">Task Assigned <span id="task-count" class="text-blue-500">05</span></div>
+      <div id="discover-button" class="flex items-center bg-gradient-to-r from-blue-400 to-purple-500 text-white p-2 rounded-lg cursor-pointer">
+        <span>Discover Something New Today!</span>
+        <img src="https://via.placeholder.com/24" alt="calendar" class="ml-2">
+      </div>
+    </div>
+
+    <!-- Activity Log Section -->
+    <div class="bg-white p-4 rounded-lg shadow mb-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold">Activity Log</h2>
+        <button id="clear-history" class="btn btn-sm btn-outline">Clear History</button>
+      </div>
+      <ul id="activity-log">
+        <li class="text-sm text-gray-600">You have Complete The Task Add Dark Mode at 12:48:15 PM</li>
+        <li class="text-sm text-gray-600">You have Complete The Task Add Dark Mode at 12:48:15 PM</li>
+      </ul>
+    </div>
+
+    <!-- Task Cards Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Task Card 1 -->
+      <div id="task-1" class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-lg font-semibold">Fix Mobile Button Issue</h3>
+        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
+        <div class="flex justify-between items-center mt-4">
+          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
+          <button id="complete-task-1" class="btn btn-sm btn-success">Completed</button>
+        </div>
+      </div>
+
+      <!-- Task Card 2 -->
+      <div id="task-2" class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-lg font-semibold">Add Dark Mode</h3>
+        <p class="text-sm text-gray-600">Store the user’s preference in localStorage, update CSS variables...</p>
+        <div class="flex justify-between items-center mt-4">
+          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
+          <button id="complete-task-2" class="btn btn-sm btn-success">Completed</button>
+        </div>
+      </div>
+
+      <!-- Task Card 3 -->
+      <div id="task-3" class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-lg font-semibold">Optimize Home page</h3>
+        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
+        <div class="flex justify-between items-center mt-4">
+          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
+          <button id="complete-task-3" class="btn btn-sm btn-success">Completed</button>
+        </div>
+      </div>
+
+      <!-- Task Card 4 -->
+      <div id="task-4" class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-lg font-semibold">Add New Emoji 🙌</h3>
+        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
+        <div class="flex justify-between items-center mt-4">
+          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
+          <button id="complete-task-4" class="btn btn-sm btn-success">Completed</button>
+        </div>
+      </div>
+
+      <!-- Task Card 5 -->
+      <div id="task-5" class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-lg font-semibold">Integrate OpenAI API</h3>
+        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
+        <div class="flex justify-between items-center mt-4">
+          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
+          <button id="complete-task-5" class="btn btn-sm btn-success">Completed</button>
+        </div>
+      </div>
+
+      <!-- Task Card 6 -->
+      <div id="task-6" class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-lg font-semibold">Improve Job Searching</h3>
+        <p class="text-sm text-gray-600">Debug using Chrome DevTools, check for overlapping...</p>
+        <div class="flex justify-between items-center mt-4">
+          <span class="text-sm text-gray-500">Deadline: 21 March 2025</span>
+          <button id="complete-task-6" class="btn btn-sm btn-success">Completed</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
