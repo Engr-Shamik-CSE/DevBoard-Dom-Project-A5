@@ -33,7 +33,7 @@ function handleTaskCompletion(taskTitle, completedButton) {
 
   // Check if all tasks are completed
   if (taskAssignedCount === 0) {
-    alert("Congratulations! You have completed all the tasks.");
+    alert("Board updated successfully. Congratulations! You have completed all the tasks.");
   }
 
   // Incident 3: Increase the "Total Tasks Completed" count by 1
